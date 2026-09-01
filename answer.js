@@ -51,3 +51,25 @@ function validateUsername(username) {
   // 4. Otherwise
   return "Available";
 }
+
+// Question 4: Dhaka CNG Fare Meter
+function getCngFare(distance, isNight = false, waitingMinutes = 0) {
+  // 1. Calculate distance fare
+  let distanceFare = 50;
+  if (distance > 2) {
+    distanceFare += (distance - 2) * 15;
+  }
+
+  // 2. Calculate waiting fare
+  const waitingFare = waitingMinutes * 2;
+
+  // 3. Calculate total fare
+  let totalFare = distanceFare + waitingFare;
+
+  // 4. Apply night surcharge
+  if (isNight) {
+    totalFare *= 1.2;
+  }
+
+  return totalFare;
+}
