@@ -73,3 +73,35 @@ function getCngFare(distance, isNight = false, waitingMinutes = 0) {
 
   return totalFare;
 }
+
+// Question 5: Run Chase Commentator
+const getChaseVerdict = (target, scored, ballsLeft) => {
+  // Step 1: Calculate runs needed
+  const runsNeeded = target - scored;
+
+  // Step 2: Match already won
+  if (runsNeeded <= 0) {
+    return "Won";
+  }
+
+  // Step 3: No balls left to score
+  if (ballsLeft <= 0) {
+    return "Lost";
+  }
+
+  // Step 4: Calculate required run rate
+  const requiredRate = (runsNeeded / ballsLeft) * 6;
+
+  // Step 5: Determine verdict based on required rate
+  let verdict = "";
+  if (requiredRate <= 6) {
+    verdict = "Comfortable";
+  } else if (requiredRate <= 12) {
+    verdict = "Tough";
+  } else {
+    verdict = "Almost Impossible";
+  }
+
+  // Step 6: Return formatted string
+  return `Need ${runsNeeded} runs in ${ballsLeft} balls | ${verdict}`;
+};
