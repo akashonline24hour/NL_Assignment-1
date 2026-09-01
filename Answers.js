@@ -30,3 +30,24 @@ function getDayType(day) {
       return "Invalid Day";
   }
 }
+
+// Question 3: Username Gatekeeper
+function validateUsername(username) {
+  // 1. If username is less than 4 characters
+  if (username.length < 4) {
+    return "Too Short";
+  }
+
+  // 2. If username contains a space
+  if (username.includes(" ")) {
+    return "No Space Allowed";
+  }
+
+  // 3. If username contains "admin"
+  if (username.toLowerCase().includes("admin")) {
+    return "Reserved Word";
+  }
+
+  // 4. Otherwise
+  return "Available";
+}
